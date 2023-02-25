@@ -12,7 +12,6 @@
 * `rails db:migrate`
 * `yarn add esbuild`
 * `yarn add @popperjs/core`
-* `rails app:template LOCATION="https://railsbytes.com/script/xkjs12"`
 
 ## Running project:
 `./bin/dev`
