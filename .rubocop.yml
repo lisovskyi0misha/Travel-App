@@ -1,0 +1,8 @@
+AllCops:
+  Exclude:
+    - 'Gemfile'
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'config/routes.rb'
+    - 'db/seeds.rb'
