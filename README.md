@@ -11,8 +11,7 @@
 * `rails db:create`
 * `rails db:migrate`
 * `yarn add esbuild`
-* `yarn add @popperjs/core`
+* `yarn add bootstrap`
 
 ## Running project:
 `./bin/dev`
-
