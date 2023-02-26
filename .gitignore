@@ -30,6 +30,11 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+config/database.yml
+
+.vscode
+
+
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
