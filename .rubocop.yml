@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - 'Gemfile'
+    - 'db/schema.rb'
 
 Style/FrozenStringLiteralComment:
   Exclude:
