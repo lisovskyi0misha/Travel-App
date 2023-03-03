@@ -1,0 +1,3 @@
+<%= turbo_stream.update 'new-accommodation' do %>
+  <%= render partial: 'accommodations/form', locals: { accommodation: Accommodation.new } %>
+<% end %>

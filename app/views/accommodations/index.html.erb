@@ -1,0 +1,6 @@
+<%= turbo_frame_tag 'new-accommodation' do %>
+  <%= link_to 'Create', new_accommodation_path %>
+<% end %>
+
+<%= turbo_stream_from :list %>
+<%= render partial: 'acc-list', locals: { accommodations: @accommodations }%>

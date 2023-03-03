@@ -9,8 +9,7 @@ Style/FrozenStringLiteralComment:
     - 'db/seeds.rb'
 
 Style/Documentation:
-  Exclude:
-    - 'db/migrate/**/*'
+  Enabled: false
 
 Metrics/MethodLength:
   Exclude:
