@@ -1,0 +1,7 @@
+<%= turbo_stream.update 'next-accommodation-link' do %>
+  <%= render partial: 'shared/pagination_bar', locals: { pagy: @pagy } %>
+<% end %>
+
+<%= turbo_stream.update 'accommodation-list' do %>
+  <%= render partial: 'accommodations', locals: { accommodations: @accommodations } %>
+<% end %>

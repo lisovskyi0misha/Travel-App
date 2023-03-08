@@ -3,4 +3,9 @@
 <% end %>
 
 <%= turbo_stream_from :list %>
-<%= render partial: 'acc-list', locals: { accommodations: @accommodations }%>
+
+<%= tag.div id: 'accommodation-list' do %>
+  <%= render partial: 'accommodations', locals: { accommodations: @accommodations } %>
+<% end %>
+
+<%= render partial: 'shared/pagination_bar', locals: { pagy: @pagy } %>

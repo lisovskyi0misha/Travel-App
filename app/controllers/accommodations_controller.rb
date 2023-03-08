@@ -5,7 +5,11 @@ class AccommodationsController < ApplicationController
   before_action :find_user, only: :create
 
   def index
-    @accommodations = Accommodation.all
+    @pagy, @accommodations = pagy(Accommodation.all)
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def show
