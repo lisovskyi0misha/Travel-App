@@ -10,10 +10,8 @@ class Accommodation < ApplicationRecord
   after_create_commit lambda {
     broadcast_append_to(
       :list,
-      target: 'list-1',
+      target: 'accommodation-list',
       partial: 'accommodations/accommodation'
     )
   }
-
-  scope :paginate, ->(page) { limit(5).offset(page ? ((page.to_i - 1) * 5) : 0).order(created_at: :desc) }
 end
