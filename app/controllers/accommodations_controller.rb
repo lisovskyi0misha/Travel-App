@@ -5,7 +5,8 @@ class AccommodationsController < ApplicationController
   before_action :find_user, only: :create
 
   def index
-    @accommodations = Accommodation.all
+    @page = params[:page] || 1
+    @accommodations = Accommodation.paginate(@page)
   end
 
   def show

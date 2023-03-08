@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Accommodation < ApplicationRecord
+  validates :name, presence: true
+
   belongs_to :user
 
   enum type: { hotel: 0, apartment: 1 }
@@ -12,4 +14,6 @@ class Accommodation < ApplicationRecord
       partial: 'accommodations/accommodation'
     )
   }
+
+  scope :paginate, ->(page) { limit(5).offset(page ? ((page.to_i - 1) * 5) : 0).order(created_at: :desc) }
 end

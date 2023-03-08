@@ -3,4 +3,10 @@
 <% end %>
 
 <%= turbo_stream_from :list %>
-<%= render partial: 'acc-list', locals: { accommodations: @accommodations }%>
+<div id="outer-acc-list">
+  <%= turbo_frame_tag 'pagination' do %>
+    <%= link_to 'previous', accommodations_path(page: @page.to_i - 1) %>
+    <%= link_to 'next', accommodations_path(page: @page.to_i + 1) %>
+    <%= render partial: 'acc-list', locals: { accommodations: @accommodations } %>
+  <% end %>
+</div>
