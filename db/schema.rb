@@ -10,21 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_03_203604) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_08_173639) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accommodations", force: :cascade do |t|
     t.string "name", null: false
     t.string "address"
-    t.string "city"
     t.integer "type"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "settlement_id", null: false
+    t.float "rate"
     t.index ["address"], name: "index_accommodations_on_address"
-    t.index ["city"], name: "index_accommodations_on_city"
+    t.index ["settlement_id"], name: "index_accommodations_on_settlement_id"
     t.index ["user_id"], name: "index_accommodations_on_user_id"
+  end
+
+  create_table "administrative_devisions", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "country_id", null: false
+    t.integer "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_administrative_devisions_on_country_id"
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "settlements", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "type"
+    t.bigint "administrative_devision_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["administrative_devision_id"], name: "index_settlements_on_administrative_devision_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,5 +73,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_03_203604) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "accommodations", "settlements"
   add_foreign_key "accommodations", "users"
+  add_foreign_key "administrative_devisions", "countries"
+  add_foreign_key "settlements", "administrative_devisions"
 end

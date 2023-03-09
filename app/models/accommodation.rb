@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 class Accommodation < ApplicationRecord
-  validates :name, presence: true
-
   belongs_to :user
+  belongs_to :settlement
+
+  validates_presence_of :rate, :name
+  validates_numericality_of :rate
 
   enum type: { hotel: 0, apartment: 1 }
 
