@@ -1,4 +1,4 @@
-
+# frozen_string_literal: true
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -6,9 +6,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  has_many :accommodations, if: owner?
+  has_many :accommodations, -> { where role: :owner }
 
   validates_uniqueness_of :email, scope: :role
+  validates_numericality_of :rate
 
   enum role: { user: 0, owner: 1 }
 end
