@@ -1,6 +1,6 @@
-<%= tag.div id: 'next-accommodation-link' do %>
-  <%= tag.div class: 'pagy-bootstrap-nav' do %>
-    <%= tag.ul class: 'pagination' do %>
+<div id="next-accommodation-link">
+  <div class="pagy-bootstrap-nav">
+    <ul class="pagination">
       <li class="page-item previous <%= pagy.page.eql?(1) ? 'disabled' : nil %>">
         <%= link_to pagy_url_for(pagy, pagy.prev), class: 'page-link', data: { turbo_method: :post } do %>
           ‹&nbsp;Prev
@@ -12,10 +12,10 @@
         </li>
       <% end %>
       <li class="page-item next <%= pagy.page.eql?(pagy.last) ? 'disabled' : nil %>">
-          <%= link_to pagy_url_for(pagy, pagy.next), class: 'page-link', data: { turbo_method: :post } do %>
+        <%= link_to pagy_url_for(pagy, pagy.next), class: 'page-link', data: { turbo_method: :post } do %>
           Next&nbsp;›
         <% end %>
       </li>
-    <% end %>
-  <% end %>
-<% end %>
+    </ul>
+  </div>
+</div>
