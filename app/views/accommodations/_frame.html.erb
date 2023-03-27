@@ -1,0 +1,3 @@
+<%= turbo_frame_tag 'choose-settlement', src: '/accommodations/new', params: { a: 's'} do %>
+  <%= f.collection_select :settlement, accommodation.country&.cities || [], :id, :name %>
+<% end %>

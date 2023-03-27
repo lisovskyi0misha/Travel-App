@@ -49,6 +49,8 @@ gem 'devise'
 
 gem 'pagy'
 
+gem 'simple_form'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

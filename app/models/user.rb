@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  has_many :accommodations, -> { where role: :owner }
+  has_many :accommodations, -> { where users: { role: :owner } }
 
   validates_uniqueness_of :email, scope: :role
   validates_numericality_of :rate

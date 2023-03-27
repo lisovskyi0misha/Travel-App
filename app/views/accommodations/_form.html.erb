@@ -1,4 +1,12 @@
-<%= form_for accommodation do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
-<% end %>
+<div class="hell" data-controller="cities" data-cities-shown-class="shown" data-cities-hidden-class="hidden">
+  <%= simple_form_for accommodation, remote: true, html: {'data-target': 'reassignment.form'} do |f| %>
+    <%= f.text_field :name %>
+    <%= f.input :country, collection: Country.with_settlements, include_blank: false, prompt: 'Choose a country', input_html: { data: { action: "change->cities#findCities", cities_target: 'country' } } %>
+    <% Country.with_settlements.each do |country| %>
+      <div class="hidden", data-cities-target="cityList" data-country-id="<%= country.id %>">
+        <%= f.input :settlement, collection: country.settlements, label: false, include_blank: false, input_html: { data: { cities_target: 'select' } } %>
+      </div>
+    <% end %>
+    <%= f.submit %>
+  <% end %>
+</div>

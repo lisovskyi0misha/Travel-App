@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root 'countries#index'
   resources :accommodations do
-    post :index, on: :collection
+    # post :index, on: :collection
   end
 
   resources :countries
