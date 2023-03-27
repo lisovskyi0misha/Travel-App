@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it { should have_many(:accommodations).conditions(role: :owner) }
+  it { should have_many(:accommodations).conditions(users: { role: :owner }) }
 
   it { should validate_uniqueness_of(:email).scoped_to(:role) }
   it { should validate_numericality_of(:rate) }

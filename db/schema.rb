@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_08_173639) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_10_110452) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,19 +22,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_173639) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "settlement_id", null: false
-    t.float "rate"
+    t.float "rate", default: 0.0
     t.index ["address"], name: "index_accommodations_on_address"
     t.index ["settlement_id"], name: "index_accommodations_on_settlement_id"
     t.index ["user_id"], name: "index_accommodations_on_user_id"
   end
 
-  create_table "administrative_devisions", force: :cascade do |t|
+  create_table "administrative_divisions", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "country_id", null: false
     t.integer "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["country_id"], name: "index_administrative_devisions_on_country_id"
+    t.index ["country_id"], name: "index_administrative_divisions_on_country_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -46,10 +46,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_173639) do
   create_table "settlements", force: :cascade do |t|
     t.string "name", null: false
     t.integer "type"
-    t.bigint "administrative_devision_id", null: false
+    t.bigint "administrative_division_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["administrative_devision_id"], name: "index_settlements_on_administrative_devision_id"
+    t.index ["administrative_division_id"], name: "index_settlements_on_administrative_division_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_173639) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "rate"
+    t.float "rate", default: 0.0
     t.integer "role"
     t.string "first_name"
     t.string "last_name"
@@ -75,6 +75,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_173639) do
 
   add_foreign_key "accommodations", "settlements"
   add_foreign_key "accommodations", "users"
-  add_foreign_key "administrative_devisions", "countries"
-  add_foreign_key "settlements", "administrative_devisions"
+  add_foreign_key "administrative_divisions", "countries"
+  add_foreign_key "settlements", "administrative_divisions"
 end

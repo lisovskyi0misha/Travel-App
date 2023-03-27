@@ -4,8 +4,10 @@
 
 <%= turbo_stream_from :list %>
 
-<%= tag.div id: 'accommodation-list' do %>
-  <%= render partial: 'accommodations', locals: { accommodations: @accommodations } %>
-<% end %>
+<%#= turbo_frame_tag :form_response do %>
+  <div id="accommodation-list">
+    <%= render partial: 'accommodations', locals: { accommodations: @accommodations } %>
+  </div>
+<%# end %>
 
 <%= render partial: 'shared/pagination_bar', locals: { pagy: @pagy } %>

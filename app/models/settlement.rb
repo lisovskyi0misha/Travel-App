@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Settlement < ApplicationRecord
-  belongs_to :administrative_devision
+  belongs_to :administrative_division
   has_many :accommodations, dependent: :nullify
 
   validates_presence_of :name

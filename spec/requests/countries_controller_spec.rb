@@ -1,12 +1,13 @@
-# forzen_string_literal: true
+# frozen_string_literal: true
 
 require 'rails_helper'
 
 RSpec.describe CountriesController do
   describe 'GET #index' do
+    let!(:countries) { create_list(:country, 5) }
     before { get '/countries' }
+
     it 'loads all countries' do
-      countries = create_list(:country, 5)
       expect(assigns(:countries)).to match_array(countries)
     end
 
